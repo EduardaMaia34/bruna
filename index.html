@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite | 15 Anos Bruna Maia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine-dark: #1f0409;
+            --wine-main: #5e0614;
+            --off-white: #fbf8f5;
+            --card-cream: #f3ece1;
+            --gold: #dcce97;
+            --text-dark: #2c1d20;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        .invitation-container {
+            max-width: 440px;
+            margin: 0 auto;
+            /* IMAGEM DE FUNDO LOCAL APONTANDO PARA MIDIA/FUNDO.JPG */
+            background-image: url('midia/fundo1.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Topo Vinho com Glitter, Mirror Ball e Folhas nos Cantos */
+        .header-top {
+            background: transparent; 
+            padding: 40px 20px 50px 20px; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Canvas de Glitter no fundo (camada 1) */
+        #glitter-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Folha dourada no Canto Inferior Esquerdo (camada 2) */
+        .folha-esquerda {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 180px;
+            height: auto;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        /* Folha dourada no Canto Superior Direito corrigida */
+        .folha-direita {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: auto;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.9;
+            transform: rotate(180deg);
+        }
+
+        /* Container interno para garantir que os textos fiquem na frente de tudo (camada 3) */
+        .header-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Textos com Alto Contraste (Branco e Dourado) */
+        .subtitle {
+            font-family: 'Great Vibes', cursive;
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @font-face {
+            font-family: 'Brother Signature';
+            src: url('midia/brother-signature.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .guest-name {
+            font-family: 'Brother Signature', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            font-weight: 300; /* Tente 300 ou lighter para afinar */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+        }
+
+        .intro-phrase {
+            font-size: 1rem;
+            color: rgb(221, 216, 216);
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 340px;
+            margin: 0 auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            padding-bottom: 10%;
+        }
+
+        /* Corpo Off-White com leve transparência */
+        .body-content {
+            background-color: rgba(251, 248, 245, 0.95);
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .date-badge {
+            background: var(--card-cream);
+            border: 1px solid #dfd2be;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--wine-main);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .time-block {
+            background: var(--wine-main);
+            color: #fff;
+            padding: 12px 10px;
+            border-radius: 8px;
+            min-width: 65px;
+            box-shadow: 0 4px 12px rgba(94, 6, 20, 0.25);
+        }
+
+        .time-block span {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .time-block label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        .info-card {
+            background: var(--card-cream);
+            border: 1px solid #dfd2be;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .info-card h4 {
+            color: var(--wine-main);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .map-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-map {
+            flex: 1;
+            padding: 9px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-gmaps { background: #4285F4; color: white; }
+        .btn-waze { background: #33ccff; color: #003366; }
+
+        .traje-section, .pix-section, .rsvp-section {
+            background: var(--card-cream);
+            border: 1px solid #dfd2be;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .rsvp-section {
+            text-align: left;
+        }
+
+        .traje-section h4, .pix-section h4, .rsvp-section h3 {
+            color: var(--wine-main);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .pix-key-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border: 1px solid #dcd1d1;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .pix-key-box span {
+            font-size: 0.82rem;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            background: var(--wine-main);
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 9px 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            background: #fff;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--wine-main);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--wine-main);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745;
+            color: #fff;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .toast.show { opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="music-player" id="musicToggle" title="Tocar Música Ambiente">
+        <i class="fa-solid fa-music" id="musicIcon"></i>
+    </div>
+
+    <div class="toast" id="toastMessage">Ação realizada com sucesso!</div>
+
+    <div class="invitation-container">
+        <!-- Topo com Glitter e as Folhas nos Cantos -->
+        <div class="header-top">
+            <canvas id="glitter-canvas"></canvas>
+            
+            <img src="midia/borda-ouro.png" alt="Folha Dourada Esquerda" class="folha-esquerda">
+            <img src="midia/borda-ouro.png" alt="Folha Dourada Direita" class="folha-direita">
+
+            <div class="header-content">
+                <div class="subtitle">It's my birthdayy!</div>
+                <img style="width: 30%; height: auto;" src="midia/letras.png" alt="Letras" class="letras">
+                <div class="guest-name">Bruna Maia</div>
+                <p class="intro-phrase">"O tempo transforma sonhos em realidade, e hoje celebro o privilégio de viver um dos capítulos mais especiais da minha história…"</p>
+
+                <div class="date-badge">
+                    SÁBADO &nbsp;|&nbsp; 05 DE MARÇO &nbsp;|&nbsp; 21:00 H
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteúdo do Convite -->
+        <div class="body-content">
+            <p style="font-size: 1.5rem; color: #6a0d0d; padding-bottom: 4%; font-family: 'Times New Roman', Times, serif;">Te vemos daqui a...</p>
+            
+            <div class="countdown-box" id="countdownBox">
+                <div class="time-block"><span id="days">00</span><label>Dias</label></div>
+                <div class="time-block"><span id="hours">00</span><label>Horas</label></div>
+                <div class="time-block"><span id="minutes">00</span><label>Min</label></div>
+                <div class="time-block"><span id="seconds">00</span><label>Seg</label></div>
+            </div>
+
+            <div class="info-card">
+                <h4><i class="fa-solid fa-location-dot"></i> Localização</h4>
+                <p><strong>Maringá Clube</strong><br>Rua Dr. Arion Ribeiro de Campos, 389, Zona 02, Maringá - PR</p>
+                <div class="map-buttons">
+                    <a href="https://maps.google.com/?q=Maringá+Clube+Rua+Dr.+Arion+Ribeiro+de+Campos+389+Maringá" target="_blank" class="btn-map btn-gmaps">
+                        <i class="fa-solid fa-map-location-dot"></i> Google Maps
+                    </a>
+                    <a href="https://waze.com/ul?q=Maring%C3%A1%20Clube&navigate=yes" target="_blank" class="btn-map btn-waze">
+                        <i class="fa-solid fa-car"></i> Waze
+                    </a>
+                </div>
+            </div>
+
+            <div class="traje-section">
+                <h4>Vestimenta</h4>
+                <p style="font-size: 0.8rem; color: #666;">Traje: Esporte Fino</p>
+                <p style="font-size: 0.8rem; color: #666;">Cores exclusivas da debutante: VERMELHO E DOURADO</p>
+            </div>
+
+            <div class="pix-section">
+                <h4>Lista de Presentes (Chave Pix)</h4>
+                <p style="font-size: 0.8rem; color: #666;">Sua presença é o meu maior presente!</p>
+                <div class="pix-key-box">
+                    <span id="pixKeyText">15anos.brutamaia@email.com</span>
+                    <button class="btn-copy" onclick="copyPixKey()">Copiar</button>
+                </div>
+            </div>
+
+            <div class="rsvp-section">
+                <h3>Confirmação de Presença</h3>
+                <h5 style="text-align: center; padding-bottom: 2%; padding-top: 0%;">ATÉ 15/02/27</h5>
+                <form id="rsvpForm" onsubmit="handleRSVP(event)">
+                    <div class="form-group">
+                        <label for="guestName">Seu Nome Completo:</label>
+                        <input type="text" id="guestName" required placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">Você vai comparecer?</label>
+                        <select id="attendance">
+                            <option value="Sim">Sim, estarei lá!</option>
+                            <option value="Nao">Não poderei ir</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Confirmação</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('glitter-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 35; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.3,
+                speedY: (Math.random() - 0.5) * 0.3,
+                alpha: Math.random()
+            });
+        }
+
+        function animateGlitter() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                p.alpha += (Math.random() - 0.5) * 0.1;
+                if (p.alpha < 0.1) p.alpha = 0.1;
+                if (p.alpha > 1) p.alpha = 1;
+
+                ctx.fillStyle = `rgba(255, 223, 128, ${p.alpha})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateGlitter);
+        }
+        animateGlitter();
+
+        const eventDate = new Date("2027-03-05T21:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            const countdownEl = document.getElementById("countdownBox");
+
+            if (distance < 0) {
+                countdownEl.innerHTML = "<h3 style='color:var(--wine-main); font-family:Cinzel,serif; margin-bottom:15px;'>O grande dia chegou!</h3>";
+                return;
+            }
+
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function copyPixKey() {
+            const pixText = document.getElementById("pixKeyText").innerText;
+            navigator.clipboard.writeText(pixText);
+            showToast("Chave Pix copiada com sucesso!");
+        }
+
+        function handleRSVP(e) {
+            e.preventDefault();
+            const name = document.getElementById("guestName");
+            const attendance = document.getElementById("attendance");
+            showToast("Presença confirmada com sucesso!");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toastMessage");
+            toast.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+        let audioCtx, oscillator;
+        let isPlaying = false;
+        document.getElementById("musicToggle").addEventListener("click", () => {
+            const icon = document.getElementById("musicIcon");
+            if (!isPlaying) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                isPlaying = true;
+                icon.className = "fa-solid fa-volume-high";
+                showToast("Música ativada");
+            } else {
+                if (oscillator) oscillator.stop();
+                if (audioCtx) audioCtx.close();
+                isPlaying = false;
+                icon.className = "fa-solid fa-music";
+                showToast("Música pausada");
+            }
+        });
+    </script>
+</body>
+</html>
