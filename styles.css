@@ -35,13 +35,17 @@
             position: relative;
         }
 
-        /* Topo Vinho com Glitter, Mirror Ball e Folhas nos Cantos */
         .header-top {
-            background: transparent; 
-            padding: 40px 20px 50px 20px; 
+            background: transparent;
+            min-height: 75vh;
+            min-height: 75svh;
+            padding: 80px 20px 32px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         /* Canvas de Glitter no fundo (camada 1) */
@@ -60,7 +64,7 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 180px;
+            width: 220px;
             height: auto;
             pointer-events: none;
             z-index: 2;
@@ -72,12 +76,69 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 180px;
+            width: 200px;
             height: auto;
             pointer-events: none;
             z-index: 2;
             opacity: 0.9;
             transform: rotate(180deg);
+        }
+
+        .bola-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: auto;
+            transform: translate(-50%, -40%);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.95;
+        }
+        .bola-2 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: auto;
+            transform: translate(60%, 40%); /* Valores positivos empurram para a direita e para baixo */
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.85;
+        }
+        .bola-3 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 250px;
+            height: auto;
+            transform: translate(35%, 50%); /* Valores positivos empurram para a direita e para baixo */
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.90;
+        }
+
+        .rachadura {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 320px; /* Ajuste o tamanho conforme quiser */
+            height: auto;
+            transform: translate(25%, 12%) rotate(10deg); /* Empurra levemente para colar nas bordas direita e inferior */
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.90;
+        }
+        .estrelinhas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 230px;
+            height: auto;
+            transform: translate(-40%, -20%) rotate(35deg);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.95;
         }
 
         /* Container interno para garantir que os textos fiquem na frente de tudo (camada 3) */
@@ -103,11 +164,11 @@
         }
         .guest-name {
             font-family: 'Brother Signature', cursive;
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--gold);
             font-weight: 300; /* Tente 300 ou lighter para afinar */
             text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .intro-phrase {
@@ -116,9 +177,10 @@
             font-style: italic;
             line-height: 1.6;
             max-width: 340px;
-            margin: 0 auto;
+            margin: 0 auto 24px auto;
+            margin-bottom: 50px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            padding-bottom: 10%;
+            padding-bottom: 0;
         }
 
         /* Corpo Off-White com leve transparência */
@@ -135,7 +197,7 @@
             border: 1px solid #dfd2be;
             border-radius: 10px;
             padding: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 0px;
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
             color: var(--wine-main);
@@ -229,18 +291,22 @@
             border-radius: 12px;
             padding: 18px;
             margin-bottom: 25px;
-            text-align: center;
+            text-align: left; /* Alinha todo o conteúdo (incluindo títulos) à esquerda */
         }
 
-        .rsvp-section {
-            text-align: left;
-        }
-
-        .traje-section h4, .pix-section h4, .rsvp-section h3 {
+        .info-card h4,
+        .traje-section h4,
+        .pix-section h4,
+        .rsvp-section h3 {
             color: var(--wine-main);
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            text-align: left;
+            justify-content: flex-start; /* Garante alinhamento à esquerda mesmo se usar flex */
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .pix-key-box {
